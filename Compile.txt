@@ -1,0 +1,3 @@
+python src/task_generator.py --base-dir .
+python src/scheduler.py --base-dir .
+python src/evaluator.py --base-dir .

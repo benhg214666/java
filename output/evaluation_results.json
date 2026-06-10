@@ -1,0 +1,51 @@
+{
+    "hard_deadline_miss_rate": 0.0,
+    "hard_deadline_miss_count": 0,
+    "hard_deadline_job_count": 33,
+    "soft_deadline_miss_rate": 0.0,
+    "soft_deadline_miss_count": 0,
+    "soft_deadline_job_count": 3,
+    "average_tardiness": 0,
+    "max_tardiness": 0,
+    "average_aperiodic_tardiness": 0.0,
+    "max_aperiodic_tardiness": 0.0,
+    "average_response_time": 4.222222,
+    "max_response_time": 13,
+    "completion_time_jitter": 6.125,
+    "acceptance_test": {
+        "sporadic_total": 2,
+        "sporadic_accepted": 2,
+        "sporadic_rejected": 0,
+        "aperiodic_total": 3,
+        "aperiodic_missed": 0
+    },
+    "sporadic_value_rate": 1.0,
+    "post_acceptance_violation_rate": 0.0,
+    "constraint_violation_count": 0,
+    "constraint_violations": [],
+    "generator_cost": 315272.0,
+    "market_revenue": 376847.64224,
+    "storage_throughput_mwh": 521.498,
+    "storage_aging_cost": 3128.988,
+    "sell_commitment_shortfall_mwh": 125.46,
+    "sell_commitment_penalty": 4391.1,
+    "objective_value": -54055.55424,
+    "verification_passed": true,
+    "level2_relaxed_assumptions": [
+        "actual renewable output may differ from day-ahead forecast",
+        "storage aging cost is charged by charge/discharge throughput",
+        "real-time market price differs from day-ahead price and sell shortfall has penalty"
+    ],
+    "comparison_to_level1": {
+        "generator_cost_delta": 54830.0,
+        "market_revenue_delta": 45197.44224,
+        "objective_value_delta": 17152.64576,
+        "sporadic_value_rate_delta": 0.0,
+        "soft_deadline_miss_rate_delta": 0.0
+    },
+    "source_files": {
+        "base_dir": "C:\\C program\\Submission_5",
+        "schedule_result": "output/schedule_result.json",
+        "acceptance_test_log": "output/acceptance_test_log.json"
+    }
+}

@@ -1,0 +1,96 @@
+{
+    "sporadic": [
+        {
+            "job_id": "s1",
+            "type": "sporadic",
+            "release_time": 1,
+            "absolute_deadline": 10,
+            "execution_time": 3,
+            "energy": 15.0,
+            "accepted": true,
+            "scheduled_times": [
+                3,
+                9,
+                10
+            ],
+            "reason": "accepted: feasible before deadline while preserving reserve"
+        },
+        {
+            "job_id": "s2",
+            "type": "sporadic",
+            "release_time": 3,
+            "absolute_deadline": 17,
+            "execution_time": 4,
+            "energy": 10.0,
+            "accepted": true,
+            "scheduled_times": [
+                11,
+                12,
+                13,
+                14
+            ],
+            "reason": "accepted: feasible before deadline while preserving reserve"
+        }
+    ],
+    "aperiodic": [
+        {
+            "job_id": "a1",
+            "type": "aperiodic",
+            "release_time": 1,
+            "absolute_deadline": 15,
+            "execution_time": 3,
+            "energy": 15.0,
+            "scheduled_times": [
+                1,
+                2,
+                3
+            ],
+            "completion_time": 3,
+            "miss": false,
+            "tardiness": 0,
+            "reason": "scheduled before soft deadline"
+        },
+        {
+            "job_id": "a2",
+            "type": "aperiodic",
+            "release_time": 3,
+            "absolute_deadline": 12,
+            "execution_time": 4,
+            "energy": 10.0,
+            "scheduled_times": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "completion_time": 6,
+            "miss": false,
+            "tardiness": 0,
+            "reason": "scheduled before soft deadline"
+        },
+        {
+            "job_id": "a3",
+            "type": "aperiodic",
+            "release_time": 5,
+            "absolute_deadline": 16,
+            "execution_time": 4,
+            "energy": 12.0,
+            "scheduled_times": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "completion_time": 8,
+            "miss": false,
+            "tardiness": 0,
+            "reason": "scheduled before soft deadline"
+        }
+    ],
+    "summary": {
+        "sporadic_total": 2,
+        "sporadic_accepted": 2,
+        "aperiodic_total": 3,
+        "aperiodic_missed": 0
+    }
+}

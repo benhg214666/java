@@ -1,0 +1,2747 @@
+{
+    "frame_size": 4,
+    "num_frames": 18,
+    "schedule_result": [
+        {
+            "t": 1,
+            "frame_id": 1,
+            "running_jobs": [
+                "a1"
+            ],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 15.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "a1": {
+                    "battery_1": 15.0
+                }
+            },
+            "sell": 15.0,
+            "soc": {
+                "battery_1": 30.0,
+                "battery_2": 25.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 2,
+            "frame_id": 1,
+            "running_jobs": [
+                "a1"
+            ],
+            "P": {
+                "thermal_1": 30.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 15.0
+            },
+            "k": {
+                "a1": {
+                    "battery_2": 15.0
+                }
+            },
+            "sell": 30.0,
+            "soc": {
+                "battery_1": 30.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 3,
+            "frame_id": 1,
+            "running_jobs": [
+                "p6_1",
+                "s1",
+                "a1",
+                "a2"
+            ],
+            "P": {
+                "thermal_1": 45.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 10.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p6_1": {
+                    "battery_1": 6.0
+                },
+                "s1": {
+                    "battery_1": 4.0,
+                    "thermal_1": 11.0
+                },
+                "a1": {
+                    "thermal_1": 15.0
+                },
+                "a2": {
+                    "thermal_1": 10.0
+                }
+            },
+            "sell": 9.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 4,
+            "frame_id": 1,
+            "running_jobs": [
+                "a2"
+            ],
+            "P": {
+                "thermal_1": 60.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "a2": {
+                    "thermal_1": 10.0
+                }
+            },
+            "sell": 50.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 5,
+            "frame_id": 2,
+            "running_jobs": [
+                "a2",
+                "a3"
+            ],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "a2": {
+                    "thermal_1": 10.0
+                },
+                "a3": {
+                    "thermal_1": 12.0
+                }
+            },
+            "sell": 53.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 6,
+            "frame_id": 2,
+            "running_jobs": [
+                "p4_1",
+                "a2",
+                "a3"
+            ],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_1": {
+                    "thermal_1": 17.0
+                },
+                "a2": {
+                    "thermal_1": 10.0
+                },
+                "a3": {
+                    "thermal_1": 12.0
+                }
+            },
+            "sell": 36.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 7,
+            "frame_id": 2,
+            "running_jobs": [
+                "p4_1",
+                "a3"
+            ],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 0.0,
+                "pv_1": 1.8,
+                "pv_2": 2.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_1": {
+                    "pv_1": 1.8,
+                    "pv_2": 2.4,
+                    "thermal_1": 12.8
+                },
+                "a3": {
+                    "thermal_1": 12.0
+                }
+            },
+            "sell": 50.2,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 8,
+            "frame_id": 2,
+            "running_jobs": [
+                "p4_1",
+                "p8_1",
+                "a3"
+            ],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 0.0,
+                "pv_1": 9.6,
+                "pv_2": 12.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_1": {
+                    "pv_1": 9.6,
+                    "pv_2": 7.4
+                },
+                "p8_1": {
+                    "pv_2": 5.4,
+                    "thermal_1": 12.6
+                },
+                "a3": {
+                    "thermal_1": 12.0
+                }
+            },
+            "sell": 50.4,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 9,
+            "frame_id": 3,
+            "running_jobs": [
+                "p4_1",
+                "p8_1",
+                "s1"
+            ],
+            "P": {
+                "thermal_1": 60.0,
+                "thermal_2": 0.0,
+                "pv_1": 15.0,
+                "pv_2": 20.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_1": {
+                    "pv_1": 15.0,
+                    "pv_2": 2.0
+                },
+                "p8_1": {
+                    "pv_2": 18.0
+                },
+                "s1": {
+                    "thermal_1": 15.0
+                }
+            },
+            "sell": 45.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 10,
+            "frame_id": 3,
+            "running_jobs": [
+                "p8_1",
+                "p5_1",
+                "s1"
+            ],
+            "P": {
+                "thermal_1": 45.0,
+                "thermal_2": 0.0,
+                "pv_1": 18.0,
+                "pv_2": 24.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p8_1": {
+                    "pv_1": 18.0
+                },
+                "p5_1": {
+                    "pv_2": 18.0
+                },
+                "s1": {
+                    "pv_2": 6.0,
+                    "thermal_1": 9.0
+                }
+            },
+            "sell": 36.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 11,
+            "frame_id": 3,
+            "running_jobs": [
+                "p8_1",
+                "p7_1",
+                "s2"
+            ],
+            "P": {
+                "thermal_1": 30.0,
+                "thermal_2": 0.0,
+                "pv_1": 13.8,
+                "pv_2": 18.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p8_1": {
+                    "pv_1": 13.8,
+                    "pv_2": 4.2
+                },
+                "p7_1": {
+                    "pv_2": 10.0
+                },
+                "s2": {
+                    "pv_2": 4.2,
+                    "thermal_1": 5.8
+                }
+            },
+            "sell": 24.2,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 12,
+            "frame_id": 3,
+            "running_jobs": [
+                "p7_1",
+                "p1_1",
+                "p2_1",
+                "p3_1",
+                "p6_2",
+                "s2"
+            ],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 16.2,
+                "pv_2": 21.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p7_1": {
+                    "pv_1": 10.0
+                },
+                "p1_1": {
+                    "pv_1": 6.2,
+                    "pv_2": 1.8
+                },
+                "p2_1": {
+                    "pv_2": 6.0
+                },
+                "p3_1": {
+                    "pv_2": 7.0
+                },
+                "p6_2": {
+                    "pv_2": 6.0
+                },
+                "s2": {
+                    "pv_2": 0.8,
+                    "thermal_1": 9.2
+                }
+            },
+            "sell": 5.8,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 13,
+            "frame_id": 4,
+            "running_jobs": [
+                "p3_1",
+                "p1_2",
+                "s2"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 16.2,
+                "pv_2": 21.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p3_1": {
+                    "pv_1": 7.0
+                },
+                "p1_2": {
+                    "pv_1": 8.0
+                },
+                "s2": {
+                    "pv_1": 1.2,
+                    "pv_2": 8.8
+                },
+                "battery_1_chg": {
+                    "pv_2": 12.8
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 32.8,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 14,
+            "frame_id": 4,
+            "running_jobs": [
+                "s2"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 9.6,
+                "pv_2": 12.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "s2": {
+                    "pv_1": 9.6,
+                    "pv_2": 0.4
+                },
+                "battery_1_chg": {
+                    "pv_2": 12.4
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 45.2,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 15,
+            "frame_id": 4,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 6.6,
+                "pv_2": 8.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_1_chg": {
+                    "pv_1": 6.6,
+                    "pv_2": 8.8
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 60.6,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 16,
+            "frame_id": 4,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 3.6,
+                "pv_2": 4.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_2_chg": {
+                    "pv_1": 3.6,
+                    "pv_2": 4.8
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 60.6,
+                "battery_2": 18.4
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 17,
+            "frame_id": 5,
+            "running_jobs": [
+                "p6_3"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 2.4,
+                "pv_2": 3.2,
+                "battery_1": 0.4,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p6_3": {
+                    "pv_1": 2.4,
+                    "pv_2": 3.2,
+                    "battery_1": 0.4
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 18.4
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 18,
+            "frame_id": 5,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 1.2,
+                "pv_2": 1.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_2_chg": {
+                    "pv_1": 1.2,
+                    "pv_2": 1.6
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 19,
+            "frame_id": 5,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 15.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 20,
+            "frame_id": 5,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 30.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 30.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 21,
+            "frame_id": 6,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 45.0,
+                "thermal_2": 20.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 65.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 22,
+            "frame_id": 6,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 60.0,
+                "thermal_2": 40.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 100.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 23,
+            "frame_id": 6,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 40.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 115.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 24,
+            "frame_id": 6,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 40.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 120.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 25,
+            "frame_id": 7,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 20.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 100.0,
+            "soc": {
+                "battery_1": 60.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 26,
+            "frame_id": 7,
+            "running_jobs": [
+                "p1_3",
+                "p2_2",
+                "p5_2",
+                "p6_4"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 20.0,
+                "battery_2": 11.2
+            },
+            "k": {
+                "p1_3": {
+                    "battery_1": 8.0
+                },
+                "p2_2": {
+                    "battery_1": 6.0
+                },
+                "p5_2": {
+                    "battery_1": 6.0,
+                    "battery_2": 11.2,
+                    "thermal_1": 0.8
+                },
+                "p6_4": {
+                    "thermal_1": 6.0
+                }
+            },
+            "sell": 73.2,
+            "soc": {
+                "battery_1": 40.2,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 27,
+            "frame_id": 7,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 40.2,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 28,
+            "frame_id": 7,
+            "running_jobs": [
+                "p7_2"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 10.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p7_2": {
+                    "battery_1": 10.0
+                }
+            },
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 30.2,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 29,
+            "frame_id": 8,
+            "running_jobs": [
+                "p7_2"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 10.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p7_2": {
+                    "battery_1": 10.0
+                }
+            },
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 20.2,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 30,
+            "frame_id": 8,
+            "running_jobs": [
+                "p4_2"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.2,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_2": {
+                    "battery_1": 0.2,
+                    "thermal_1": 16.8
+                }
+            },
+            "sell": 63.2,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 31,
+            "frame_id": 8,
+            "running_jobs": [
+                "p4_2"
+            ],
+            "P": {
+                "thermal_1": 65.0,
+                "thermal_2": 0.0,
+                "pv_1": 1.2,
+                "pv_2": 1.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_2": {
+                    "pv_1": 1.2,
+                    "pv_2": 1.6,
+                    "thermal_1": 14.2
+                }
+            },
+            "sell": 50.8,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 32,
+            "frame_id": 8,
+            "running_jobs": [
+                "p4_2",
+                "p8_2"
+            ],
+            "P": {
+                "thermal_1": 50.0,
+                "thermal_2": 0.0,
+                "pv_1": 4.8,
+                "pv_2": 6.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_2": {
+                    "pv_1": 4.8,
+                    "pv_2": 6.4,
+                    "thermal_1": 5.8
+                },
+                "p8_2": {
+                    "thermal_1": 18.0
+                }
+            },
+            "sell": 26.2,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 33,
+            "frame_id": 9,
+            "running_jobs": [
+                "p4_2",
+                "p8_2"
+            ],
+            "P": {
+                "thermal_1": 35.0,
+                "thermal_2": 0.0,
+                "pv_1": 9.6,
+                "pv_2": 12.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_2": {
+                    "pv_1": 9.6,
+                    "pv_2": 7.4
+                },
+                "p8_2": {
+                    "pv_2": 5.4,
+                    "thermal_1": 12.6
+                }
+            },
+            "sell": 22.4,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 34,
+            "frame_id": 9,
+            "running_jobs": [
+                "p8_2"
+            ],
+            "P": {
+                "thermal_1": 20.0,
+                "thermal_2": 0.0,
+                "pv_1": 6.0,
+                "pv_2": 8.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p8_2": {
+                    "pv_1": 6.0,
+                    "pv_2": 8.0,
+                    "thermal_1": 4.0
+                }
+            },
+            "sell": 16.0,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 35,
+            "frame_id": 9,
+            "running_jobs": [
+                "p8_2",
+                "p1_4",
+                "p2_3",
+                "p3_2",
+                "p6_5"
+            ],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 16.8,
+                "pv_2": 22.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p8_2": {
+                    "pv_1": 16.8,
+                    "pv_2": 1.2
+                },
+                "p1_4": {
+                    "pv_2": 8.0
+                },
+                "p2_3": {
+                    "pv_2": 6.0
+                },
+                "p3_2": {
+                    "pv_2": 7.0
+                },
+                "p6_5": {
+                    "pv_2": 0.2,
+                    "thermal_1": 5.8
+                }
+            },
+            "sell": 9.2,
+            "soc": {
+                "battery_1": 20.0,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 36,
+            "frame_id": 9,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 7.2,
+                "pv_2": 9.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_1_chg": {
+                    "pv_1": 7.2,
+                    "pv_2": 9.6
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 36.8,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 37,
+            "frame_id": 10,
+            "running_jobs": [
+                "p3_2"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 9.6,
+                "pv_2": 12.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p3_2": {
+                    "pv_1": 7.0
+                },
+                "battery_1_chg": {
+                    "pv_1": 2.6,
+                    "pv_2": 12.8
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 52.2,
+                "battery_2": 10.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 38,
+            "frame_id": 10,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 4.8,
+                "pv_2": 6.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_2_chg": {
+                    "pv_1": 4.8,
+                    "pv_2": 6.4
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 52.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 39,
+            "frame_id": 10,
+            "running_jobs": [
+                "p5_3",
+                "p7_3"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 7.8,
+                "pv_2": 10.4,
+                "battery_1": 9.8,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p5_3": {
+                    "pv_1": 7.8,
+                    "pv_2": 10.2
+                },
+                "p7_3": {
+                    "pv_2": 0.2,
+                    "battery_1": 9.8
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 42.4,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 40,
+            "frame_id": 10,
+            "running_jobs": [
+                "p7_3"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 4.8,
+                "pv_2": 6.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p7_3": {
+                    "pv_1": 4.8,
+                    "pv_2": 5.2
+                },
+                "battery_1_chg": {
+                    "pv_2": 1.2
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 43.6,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 41,
+            "frame_id": 11,
+            "running_jobs": [
+                "p6_6"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 3.6,
+                "pv_2": 4.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p6_6": {
+                    "pv_1": 3.6,
+                    "pv_2": 2.4
+                },
+                "battery_1_chg": {
+                    "pv_2": 2.4
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 46.0,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 42,
+            "frame_id": 11,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 3.6,
+                "pv_2": 4.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_1_chg": {
+                    "pv_1": 3.6,
+                    "pv_2": 4.8
+                }
+            },
+            "sell": 0.0,
+            "soc": {
+                "battery_1": 54.4,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 43,
+            "frame_id": 11,
+            "running_jobs": [
+                "p1_5"
+            ],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.6,
+                "pv_2": 0.8,
+                "battery_1": 6.6,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p1_5": {
+                    "pv_1": 0.6,
+                    "pv_2": 0.8,
+                    "battery_1": 6.6
+                }
+            },
+            "sell": 15.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 44,
+            "frame_id": 11,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 30.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 30.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 45,
+            "frame_id": 12,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 45.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 45.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 46,
+            "frame_id": 12,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 60.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 60.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 47,
+            "frame_id": 12,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 75.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 48,
+            "frame_id": 12,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 49,
+            "frame_id": 13,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 50,
+            "frame_id": 13,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 47.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 51,
+            "frame_id": 13,
+            "running_jobs": [
+                "p2_4",
+                "p6_7"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 12.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p2_4": {
+                    "battery_1": 6.0
+                },
+                "p6_7": {
+                    "battery_1": 6.0
+                }
+            },
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 35.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 52,
+            "frame_id": 13,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 35.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 53,
+            "frame_id": 14,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 0.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 80.0,
+            "soc": {
+                "battery_1": 35.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 54,
+            "frame_id": 14,
+            "running_jobs": [
+                "p4_3"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 20.0,
+                "pv_1": 0.6,
+                "pv_2": 0.8,
+                "battery_1": 15.6,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_3": {
+                    "pv_1": 0.6,
+                    "pv_2": 0.8,
+                    "battery_1": 15.6
+                }
+            },
+            "sell": 100.0,
+            "soc": {
+                "battery_1": 20.2,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 55,
+            "frame_id": 14,
+            "running_jobs": [
+                "p4_3"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 40.0,
+                "pv_1": 8.4,
+                "pv_2": 11.2,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_3": {
+                    "pv_1": 8.4,
+                    "pv_2": 8.6
+                },
+                "battery_1_chg": {
+                    "pv_2": 2.6
+                }
+            },
+            "sell": 120.0,
+            "soc": {
+                "battery_1": 22.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 56,
+            "frame_id": 14,
+            "running_jobs": [
+                "p4_3",
+                "p8_3"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 40.0,
+                "pv_1": 21.0,
+                "pv_2": 28.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_3": {
+                    "pv_1": 17.0
+                },
+                "p8_3": {
+                    "pv_1": 4.0,
+                    "pv_2": 14.0
+                },
+                "battery_1_chg": {
+                    "pv_2": 14.0
+                }
+            },
+            "sell": 120.0,
+            "soc": {
+                "battery_1": 36.8,
+                "battery_2": 21.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 57,
+            "frame_id": 15,
+            "running_jobs": [
+                "p4_3",
+                "p8_3"
+            ],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 40.0,
+                "pv_1": 34.2,
+                "pv_2": 45.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p4_3": {
+                    "pv_1": 17.0
+                },
+                "p8_3": {
+                    "pv_1": 17.2,
+                    "pv_2": 0.8
+                },
+                "battery_1_chg": {
+                    "pv_2": 20.0
+                },
+                "battery_2_chg": {
+                    "pv_2": 15.0
+                }
+            },
+            "sell": 129.8,
+            "soc": {
+                "battery_1": 56.8,
+                "battery_2": 36.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 58,
+            "frame_id": 15,
+            "running_jobs": [
+                "p8_3"
+            ],
+            "P": {
+                "thermal_1": 65.0,
+                "thermal_2": 40.0,
+                "pv_1": 48.0,
+                "pv_2": 64.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p8_3": {
+                    "pv_1": 18.0
+                },
+                "battery_1_chg": {
+                    "pv_1": 20.0
+                },
+                "battery_2_chg": {
+                    "pv_1": 10.0,
+                    "pv_2": 5.0
+                }
+            },
+            "sell": 164.0,
+            "soc": {
+                "battery_1": 76.8,
+                "battery_2": 51.2
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 59,
+            "frame_id": 15,
+            "running_jobs": [
+                "p8_3"
+            ],
+            "P": {
+                "thermal_1": 50.0,
+                "thermal_2": 20.0,
+                "pv_1": 57.6,
+                "pv_2": 76.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p8_3": {
+                    "pv_1": 18.0
+                },
+                "battery_1_chg": {
+                    "pv_1": 20.0
+                },
+                "battery_2_chg": {
+                    "pv_1": 8.8
+                }
+            },
+            "sell": 157.6,
+            "soc": {
+                "battery_1": 96.8,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 60,
+            "frame_id": 15,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 35.0,
+                "thermal_2": 0.0,
+                "pv_1": 58.8,
+                "pv_2": 78.4,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "battery_1_chg": {
+                    "pv_1": 3.2
+                }
+            },
+            "sell": 169.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 61,
+            "frame_id": 16,
+            "running_jobs": [
+                "p3_3",
+                "p7_4"
+            ],
+            "P": {
+                "thermal_1": 20.0,
+                "thermal_2": 0.0,
+                "pv_1": 60.0,
+                "pv_2": 80.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p3_3": {
+                    "pv_1": 7.0
+                },
+                "p7_4": {
+                    "pv_1": 10.0
+                }
+            },
+            "sell": 143.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 62,
+            "frame_id": 16,
+            "running_jobs": [
+                "p3_3",
+                "p7_4",
+                "p1_6",
+                "p5_4",
+                "p6_8"
+            ],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 57.0,
+                "pv_2": 76.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p3_3": {
+                    "pv_1": 7.0
+                },
+                "p7_4": {
+                    "pv_1": 10.0
+                },
+                "p1_6": {
+                    "pv_1": 8.0
+                },
+                "p5_4": {
+                    "pv_1": 18.0
+                },
+                "p6_8": {
+                    "pv_1": 6.0
+                }
+            },
+            "sell": 99.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 63,
+            "frame_id": 16,
+            "running_jobs": [
+                "p1_7",
+                "p2_5"
+            ],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 48.0,
+                "pv_2": 64.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p1_7": {
+                    "pv_1": 8.0
+                },
+                "p2_5": {
+                    "pv_1": 6.0
+                }
+            },
+            "sell": 98.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 64,
+            "frame_id": 16,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 0.0,
+                "thermal_2": 0.0,
+                "pv_1": 36.0,
+                "pv_2": 48.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 84.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 65,
+            "frame_id": 17,
+            "running_jobs": [
+                "p6_9"
+            ],
+            "P": {
+                "thermal_1": 15.0,
+                "thermal_2": 0.0,
+                "pv_1": 21.6,
+                "pv_2": 28.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {
+                "p6_9": {
+                    "pv_1": 6.0
+                }
+            },
+            "sell": 59.4,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 66,
+            "frame_id": 17,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 30.0,
+                "thermal_2": 0.0,
+                "pv_1": 7.2,
+                "pv_2": 9.6,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 46.8,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 67,
+            "frame_id": 17,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 45.0,
+                "thermal_2": 20.0,
+                "pv_1": 0.6,
+                "pv_2": 0.8,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 66.4,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 68,
+            "frame_id": 17,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 60.0,
+                "thermal_2": 40.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 100.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 69,
+            "frame_id": 18,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 75.0,
+                "thermal_2": 45.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 120.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 70,
+            "frame_id": 18,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 45.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 125.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 71,
+            "frame_id": 18,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 45.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 125.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        },
+        {
+            "t": 72,
+            "frame_id": 18,
+            "running_jobs": [],
+            "P": {
+                "thermal_1": 80.0,
+                "thermal_2": 45.0,
+                "pv_1": 0.0,
+                "pv_2": 0.0,
+                "battery_1": 0.0,
+                "battery_2": 0.0
+            },
+            "k": {},
+            "sell": 125.0,
+            "soc": {
+                "battery_1": 100.0,
+                "battery_2": 60.0
+            },
+            "missed_aperiodic": [],
+            "rejected_sporadic": []
+        }
+    ],
+    "job_schedule": [
+        {
+            "job_id": "a1",
+            "task_id": "a1",
+            "release_time": 1,
+            "absolute_deadline": 15,
+            "execution_time": 3,
+            "energy": 15.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                1,
+                2,
+                3
+            ],
+            "completion_time": 3,
+            "response_time": 2,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_1",
+            "task_id": "p6",
+            "release_time": 1,
+            "absolute_deadline": 8,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                3
+            ],
+            "completion_time": 3,
+            "response_time": 2,
+            "deadline_met": true
+        },
+        {
+            "job_id": "s1",
+            "task_id": "s1",
+            "release_time": 1,
+            "absolute_deadline": 10,
+            "execution_time": 3,
+            "energy": 15.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                3,
+                9,
+                10
+            ],
+            "completion_time": 10,
+            "response_time": 9,
+            "deadline_met": true
+        },
+        {
+            "job_id": "a2",
+            "task_id": "a2",
+            "release_time": 3,
+            "absolute_deadline": 12,
+            "execution_time": 4,
+            "energy": 10.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "completion_time": 6,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_1",
+            "task_id": "p1",
+            "release_time": 3,
+            "absolute_deadline": 12,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                12
+            ],
+            "completion_time": 12,
+            "response_time": 9,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p5_1",
+            "task_id": "p5",
+            "release_time": 3,
+            "absolute_deadline": 10,
+            "execution_time": 1,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                10
+            ],
+            "completion_time": 10,
+            "response_time": 7,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p7_1",
+            "task_id": "p7",
+            "release_time": 3,
+            "absolute_deadline": 12,
+            "execution_time": 2,
+            "energy": 10.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                11,
+                12
+            ],
+            "completion_time": 12,
+            "response_time": 9,
+            "deadline_met": true
+        },
+        {
+            "job_id": "s2",
+            "task_id": "s2",
+            "release_time": 3,
+            "absolute_deadline": 17,
+            "execution_time": 4,
+            "energy": 10.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                11,
+                12,
+                13,
+                14
+            ],
+            "completion_time": 14,
+            "response_time": 11,
+            "deadline_met": true
+        },
+        {
+            "job_id": "a3",
+            "task_id": "a3",
+            "release_time": 5,
+            "absolute_deadline": 16,
+            "execution_time": 4,
+            "energy": 12.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "completion_time": 8,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p3_1",
+            "task_id": "p3",
+            "release_time": 5,
+            "absolute_deadline": 20,
+            "execution_time": 2,
+            "energy": 7.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                12,
+                13
+            ],
+            "completion_time": 13,
+            "response_time": 8,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p4_1",
+            "task_id": "p4",
+            "release_time": 6,
+            "absolute_deadline": 9,
+            "execution_time": 4,
+            "energy": 17.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "completion_time": 9,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p2_1",
+            "task_id": "p2",
+            "release_time": 7,
+            "absolute_deadline": 14,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                12
+            ],
+            "completion_time": 12,
+            "response_time": 5,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p8_1",
+            "task_id": "p8",
+            "release_time": 8,
+            "absolute_deadline": 11,
+            "execution_time": 4,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                8,
+                9,
+                10,
+                11
+            ],
+            "completion_time": 11,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_2",
+            "task_id": "p6",
+            "release_time": 9,
+            "absolute_deadline": 16,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                12
+            ],
+            "completion_time": 12,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_2",
+            "task_id": "p1",
+            "release_time": 13,
+            "absolute_deadline": 22,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                13
+            ],
+            "completion_time": 13,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_3",
+            "task_id": "p6",
+            "release_time": 17,
+            "absolute_deadline": 24,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                17
+            ],
+            "completion_time": 17,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p2_2",
+            "task_id": "p2",
+            "release_time": 21,
+            "absolute_deadline": 28,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                26
+            ],
+            "completion_time": 26,
+            "response_time": 5,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p5_2",
+            "task_id": "p5",
+            "release_time": 21,
+            "absolute_deadline": 28,
+            "execution_time": 1,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                26
+            ],
+            "completion_time": 26,
+            "response_time": 5,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p7_2",
+            "task_id": "p7",
+            "release_time": 21,
+            "absolute_deadline": 30,
+            "execution_time": 2,
+            "energy": 10.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                28,
+                29
+            ],
+            "completion_time": 29,
+            "response_time": 8,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_3",
+            "task_id": "p1",
+            "release_time": 23,
+            "absolute_deadline": 32,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                26
+            ],
+            "completion_time": 26,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_4",
+            "task_id": "p6",
+            "release_time": 25,
+            "absolute_deadline": 32,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                26
+            ],
+            "completion_time": 26,
+            "response_time": 1,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p3_2",
+            "task_id": "p3",
+            "release_time": 29,
+            "absolute_deadline": 44,
+            "execution_time": 2,
+            "energy": 7.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                35,
+                37
+            ],
+            "completion_time": 37,
+            "response_time": 8,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p4_2",
+            "task_id": "p4",
+            "release_time": 30,
+            "absolute_deadline": 33,
+            "execution_time": 4,
+            "energy": 17.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                30,
+                31,
+                32,
+                33
+            ],
+            "completion_time": 33,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p8_2",
+            "task_id": "p8",
+            "release_time": 32,
+            "absolute_deadline": 35,
+            "execution_time": 4,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                32,
+                33,
+                34,
+                35
+            ],
+            "completion_time": 35,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_4",
+            "task_id": "p1",
+            "release_time": 33,
+            "absolute_deadline": 42,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                35
+            ],
+            "completion_time": 35,
+            "response_time": 2,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_5",
+            "task_id": "p6",
+            "release_time": 33,
+            "absolute_deadline": 40,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                35
+            ],
+            "completion_time": 35,
+            "response_time": 2,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p2_3",
+            "task_id": "p2",
+            "release_time": 35,
+            "absolute_deadline": 42,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                35
+            ],
+            "completion_time": 35,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p5_3",
+            "task_id": "p5",
+            "release_time": 39,
+            "absolute_deadline": 46,
+            "execution_time": 1,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                39
+            ],
+            "completion_time": 39,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p7_3",
+            "task_id": "p7",
+            "release_time": 39,
+            "absolute_deadline": 48,
+            "execution_time": 2,
+            "energy": 10.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                39,
+                40
+            ],
+            "completion_time": 40,
+            "response_time": 1,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_6",
+            "task_id": "p6",
+            "release_time": 41,
+            "absolute_deadline": 48,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                41
+            ],
+            "completion_time": 41,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_5",
+            "task_id": "p1",
+            "release_time": 43,
+            "absolute_deadline": 52,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                43
+            ],
+            "completion_time": 43,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p2_4",
+            "task_id": "p2",
+            "release_time": 49,
+            "absolute_deadline": 56,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                51
+            ],
+            "completion_time": 51,
+            "response_time": 2,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_7",
+            "task_id": "p6",
+            "release_time": 49,
+            "absolute_deadline": 56,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                51
+            ],
+            "completion_time": 51,
+            "response_time": 2,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_6",
+            "task_id": "p1",
+            "release_time": 53,
+            "absolute_deadline": 62,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                62
+            ],
+            "completion_time": 62,
+            "response_time": 9,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p3_3",
+            "task_id": "p3",
+            "release_time": 53,
+            "absolute_deadline": 68,
+            "execution_time": 2,
+            "energy": 7.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                61,
+                62
+            ],
+            "completion_time": 62,
+            "response_time": 9,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p4_3",
+            "task_id": "p4",
+            "release_time": 54,
+            "absolute_deadline": 57,
+            "execution_time": 4,
+            "energy": 17.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                54,
+                55,
+                56,
+                57
+            ],
+            "completion_time": 57,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p8_3",
+            "task_id": "p8",
+            "release_time": 56,
+            "absolute_deadline": 59,
+            "execution_time": 4,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                56,
+                57,
+                58,
+                59
+            ],
+            "completion_time": 59,
+            "response_time": 3,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p5_4",
+            "task_id": "p5",
+            "release_time": 57,
+            "absolute_deadline": 64,
+            "execution_time": 1,
+            "energy": 18.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                62
+            ],
+            "completion_time": 62,
+            "response_time": 5,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_8",
+            "task_id": "p6",
+            "release_time": 57,
+            "absolute_deadline": 64,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                62
+            ],
+            "completion_time": 62,
+            "response_time": 5,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p7_4",
+            "task_id": "p7",
+            "release_time": 57,
+            "absolute_deadline": 66,
+            "execution_time": 2,
+            "energy": 10.0,
+            "preemptive": 0,
+            "scheduled_times": [
+                61,
+                62
+            ],
+            "completion_time": 62,
+            "response_time": 5,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p1_7",
+            "task_id": "p1",
+            "release_time": 63,
+            "absolute_deadline": 72,
+            "execution_time": 1,
+            "energy": 8.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                63
+            ],
+            "completion_time": 63,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p2_5",
+            "task_id": "p2",
+            "release_time": 63,
+            "absolute_deadline": 70,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                63
+            ],
+            "completion_time": 63,
+            "response_time": 0,
+            "deadline_met": true
+        },
+        {
+            "job_id": "p6_9",
+            "task_id": "p6",
+            "release_time": 65,
+            "absolute_deadline": 72,
+            "execution_time": 1,
+            "energy": 6.0,
+            "preemptive": 1,
+            "scheduled_times": [
+                65
+            ],
+            "completion_time": 65,
+            "response_time": 0,
+            "deadline_met": true
+        }
+    ],
+    "summary": {
+        "total_periodic_jobs_in_horizon": 38,
+        "total_jobs_in_schedule": 43,
+        "scheduled_jobs": 43,
+        "failed_jobs": 0,
+        "skipped_jobs_past_horizon": 0,
+        "all_periodic_jobs_scheduled": true,
+        "hard_deadline_miss_rate": 0.0,
+        "average_response_time": 3.744186,
+        "max_response_time": 11,
+        "average_tardiness": 0,
+        "max_tardiness": 0,
+        "completion_time_jitter": 6.875,
+        "generator_cost": 256890.0,
+        "market_revenue": 330194.8,
+        "objective_value": -73304.8,
+        "sporadic_value_rate": 1.0,
+        "soft_deadline_miss_rate": 0.0,
+        "average_aperiodic_tardiness": 0
+    },
+    "failed_jobs": [],
+    "skipped_jobs": [],
+    "verification": {
+        "passed": true,
+        "errors": []
+    }
+}

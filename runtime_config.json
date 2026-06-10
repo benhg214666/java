@@ -1,0 +1,17 @@
+{
+    "level": 2,
+    "advanced_scheduler": "src/advanced_scheduler.py",
+    "base_dir": ".",
+    "relaxed_assumptions": [
+        "renewable_uncertainty",
+        "storage_aging_cost",
+        "realtime_market_price_and_sell_commitment_penalty"
+    ],
+    "outputs": {
+        "schedule_result": "output/schedule_result.json",
+        "acceptance_test_log": "output/acceptance_test_log.json",
+        "evaluation_results": "output/evaluation_results.json"
+    },
+    "storage_aging_cost_per_mwh": 6.0,
+    "sell_shortfall_penalty_per_mwh": 35.0
+}
