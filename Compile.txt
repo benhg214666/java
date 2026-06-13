@@ -1,3 +1,12 @@
-python src/task_generator.py --base-dir .
-python src/scheduler.py --base-dir .
-python src/evaluator.py --base-dir .
+# Python core
+python src/python/task_generator.py --base-dir .
+python src/python/scheduler.py --base-dir .
+python src/python/evaluator.py --base-dir .
+
+# Java Input UI
+javac src\java\input_ui\*.java
+java -cp src\java\input_ui TaskView
+
+# Java Output UI
+javac src\java\output_ui\org\slf4j\*.java src\java\output_ui\*.java
+java -cp src\java\output_ui OutputFrame

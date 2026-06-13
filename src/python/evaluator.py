@@ -16,6 +16,14 @@ EPS = 1e-7
 APERIODIC_MISS_PENALTY = 10_000
 
 
+def find_project_root() -> Path:
+    current_path = Path(__file__).resolve()
+    for candidate in current_path.parents:
+        if (candidate / "input").is_dir() and (candidate / "src").is_dir():
+            return candidate
+    return current_path.parent.parent.parent
+
+
 def load_json(path: Path, default: Any | None = None) -> Any:
     if not path.exists():
         if default is not None:
@@ -312,7 +320,7 @@ def check_constraints(
 
 
 def parse_args() -> argparse.Namespace:
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = find_project_root()
     parser = argparse.ArgumentParser(description="Evaluate RTSPJT output JSON files.")
     parser.add_argument("--base-dir", type=Path, default=project_root)
     parser.add_argument("--task-set", type=Path, default=None)

@@ -25,6 +25,14 @@ PERIODS = (6, 8, 10, 12, 14, 15, 16, 18, 20, 24)
 TIGHT_PERIODS = (8, 12, 16, 20, 24)
 
 
+def find_project_root() -> Path:
+    current_path = Path(__file__).resolve()
+    for candidate in current_path.parents:
+        if (candidate / "input").is_dir() and (candidate / "src").is_dir():
+            return candidate
+    return current_path.parent.parent.parent
+
+
 @dataclass(frozen=True)
 class Task:
     r: int
@@ -277,7 +285,7 @@ def generate_task_set(
 
 
 def parse_args() -> argparse.Namespace:
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = find_project_root()
     parser = argparse.ArgumentParser(description="Generate output/task_set.json for RTSPJT Level 1.")
     parser.add_argument("--base-dir", type=Path, default=project_root)
     parser.add_argument("--output", type=Path, default=None)
@@ -316,9 +324,8 @@ def main() -> None:
     if args.count is not None and not MIN_TASKS <= args.count <= MAX_TASKS:
         raise ValueError("--count must be between 6 and 10")
 
-    project_root = Path(__file__).resolve().parent.parent
     base_dir = args.base_dir.resolve()
-    output_path = args.output.resolve() if args.output else project_root / "output" / "task_set.json"
+    output_path = args.output.resolve() if args.output else base_dir / "output" / "task_set.json"
 
     task_set, metadata = generate_task_set(
     base_dir=base_dir,

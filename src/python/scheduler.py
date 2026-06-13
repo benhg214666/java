@@ -38,6 +38,14 @@ DEFAULT_EXTRA_JOBS = {
 }
 
 
+def find_project_root() -> Path:
+    current_path = Path(__file__).resolve()
+    for candidate in current_path.parents:
+        if (candidate / "input").is_dir() and (candidate / "src").is_dir():
+            return candidate
+    return current_path.parent.parent.parent
+
+
 @dataclass(frozen=True)
 class Task:
     task_id: str
@@ -916,7 +924,7 @@ def verify_schedule(jobs: list[Job], rows: list[dict[str, Any]], settings: dict[
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build the 72-hour static schedule_result.json")
-    default_base = Path(__file__).resolve().parent.parent if Path(__file__).resolve().parent.name == "src" else Path.cwd()
+    default_base = find_project_root()
     parser.add_argument("--base-dir", type=Path, default=default_base)
     parser.add_argument("--task-set", type=Path, default=None)
     parser.add_argument("--processor-settings", type=Path, default=None)

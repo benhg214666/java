@@ -31,6 +31,14 @@ DEFAULT_EXTRA_JOBS = {
 }
 
 
+def find_project_root() -> Path:
+    current_path = Path(__file__).resolve()
+    for candidate in current_path.parents:
+        if (candidate / "input").is_dir() and (candidate / "src").is_dir():
+            return candidate
+    return current_path.parent.parent.parent
+
+
 def load_json(path: Path, default: Any | None = None) -> Any:
     if not path.exists():
         if default is not None:
@@ -47,9 +55,9 @@ def write_json(path: Path, payload: Any) -> None:
 
 
 def add_src_to_path(base_dir: Path) -> None:
-    src_dir = base_dir / "src"
-    if str(src_dir) not in sys.path:
-        sys.path.insert(0, str(src_dir))
+    python_src_dir = base_dir / "src" / "python"
+    if str(python_src_dir) not in sys.path:
+        sys.path.insert(0, str(python_src_dir))
 
 
 def renewable_multiplier(hour: int) -> float:
@@ -479,7 +487,7 @@ def run_level2(base_dir: Path) -> dict[str, Any]:
 
 
 def parse_args() -> argparse.Namespace:
-    default_base = Path(__file__).resolve().parent.parent
+    default_base = find_project_root()
     parser = argparse.ArgumentParser(description="Run RTSPJT Level 2 advanced dynamic scheduling.")
     parser.add_argument("--base-dir", type=Path, default=default_base)
     return parser.parse_args()
