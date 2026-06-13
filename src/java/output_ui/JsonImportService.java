@@ -52,7 +52,6 @@ public class JsonImportService {
         return defaultPath;
     }
 
-    @SuppressWarnings("unchecked")
     private ScheduleData toScheduleData(Object parsedJson) {
         Map<String, Object> root = requireObject(parsedJson, "root");
         List<Object> scheduleResultList = requireArray(
@@ -86,7 +85,6 @@ public class JsonImportService {
         return result;
     }
 
-    @SuppressWarnings("unchecked")
     private Map<String, Number> toNumberMap(Object rawObject) {
         if (rawObject == null) {
             return Map.of();
@@ -102,18 +100,24 @@ public class JsonImportService {
         return numbers;
     }
 
-    @SuppressWarnings("unchecked")
     private Map<String, Object> requireObject(Object value, String fieldName) {
         if (value instanceof Map<?, ?> map) {
-            return (Map<String, Object>) map;
+            Map<String, Object> converted = new LinkedHashMap<>();
+            for (Map.Entry<?, ?> entry : map.entrySet()) {
+                Object key = entry.getKey();
+                if (!(key instanceof String)) {
+                    throw new IllegalArgumentException("Expected string key for " + fieldName);
+                }
+                converted.put((String) key, entry.getValue());
+            }
+            return converted;
         }
         throw new IllegalArgumentException("Expected object for " + fieldName);
     }
 
-    @SuppressWarnings("unchecked")
     private List<Object> requireArray(Object value, String fieldName) {
         if (value instanceof List<?> list) {
-            return (List<Object>) list;
+            return new ArrayList<>(list);
         }
         throw new IllegalArgumentException("Expected array for " + fieldName);
     }
