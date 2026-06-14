@@ -17,6 +17,7 @@ public class TaskView extends JFrame implements TaskInputView {
     };
 
     private static final Object[] DEFAULT_ROW_VALUES = {0, 0, 0, 0, 0, 1};
+    private static final int MAX_TASK_COUNT = 10;
 
     private JTable taskTable;
     private DefaultTableModel tableModel;
@@ -55,7 +56,12 @@ public class TaskView extends JFrame implements TaskInputView {
 
     @Override
     public void addEmptyRow() {
-        tableModel.addRow(DEFAULT_ROW_VALUES);
+        if (hasReachedMaximumTaskCount()) {
+            showErrorMessage("Maximum 10 tasks are allowed.");
+            return;
+        }
+
+        tableModel.addRow(createDefaultTaskRow());
     }
 
     @Override
@@ -136,5 +142,13 @@ public class TaskView extends JFrame implements TaskInputView {
 
     private boolean isValidRowIndex(int rowIndex) {
         return rowIndex >= 0 && rowIndex < tableModel.getRowCount();
+    }
+
+    private boolean hasReachedMaximumTaskCount() {
+        return tableModel.getRowCount() >= MAX_TASK_COUNT;
+    }
+
+    private Object[] createDefaultTaskRow() {
+        return DEFAULT_ROW_VALUES.clone();
     }
 }
