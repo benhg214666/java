@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +38,18 @@ public class TaskController {
     }
 
     private void handleExportButtonClick() {
-        view.showSuccessMessage("Export JSON will be implemented in the next phase.");
+        exportTasksToJsonFile();
+    }
+
+    private void exportTasksToJsonFile() {
+        try {
+            List<Task> tasks = collectTasksFromView();
+            String jsonContent = convertTasksToJson(tasks);
+            saveJsonToFile(jsonContent);
+            view.showSuccessMessage("task_set.json exported to output folder successfully.");
+        } catch (IOException exception) {
+            view.showErrorMessage("Failed to export task_set.json.");
+        }
     }
 
     List<Task> collectTasksFromView() {
@@ -49,7 +65,23 @@ public class TaskController {
     }
 
     String convertTasksToJson(List<Task> tasks) {
-        return "{\"periodic\": {" + buildPeriodicContent(tasks) + "}}";
+        return "{\n"
+                + "    \"periodic\": {"
+                + buildPeriodicContent(tasks)
+                + "\n"
+                + "    }\n"
+                + "}";
+    }
+
+    private void saveJsonToFile(String jsonContent) throws IOException {
+        writeJsonFile(jsonContent);
+    }
+
+    private void writeJsonFile(String jsonContent) throws IOException {
+        Path outputDirectory = Paths.get("output");
+        Files.createDirectories(outputDirectory);
+        Path outputPath = outputDirectory.resolve("task_set.json");
+        Files.writeString(outputPath, jsonContent, StandardCharsets.UTF_8);
     }
 
     private boolean isValidRowIndex(int rowIndex) {
@@ -61,14 +93,19 @@ public class TaskController {
 
         for (int taskIndex = 0; taskIndex < tasks.size(); taskIndex++) {
             int taskNumber = taskIndex + 1;
-            taskEntries.add(buildTaskEntry(taskNumber, tasks.get(taskIndex)));
+            boolean isLastTask = taskIndex == tasks.size() - 1;
+            taskEntries.add(buildTaskEntry(taskNumber, tasks.get(taskIndex), isLastTask));
         }
 
-        return String.join(", ", taskEntries);
+        return String.join("", taskEntries);
     }
 
-    private String buildTaskEntry(int taskNumber, Task task) {
-        return "\"p" + taskNumber + "\": " + buildTaskJson(task);
+    private String buildTaskEntry(int taskNumber, Task task, boolean isLastTask) {
+        String lineEnding = isLastTask ? "" : ",";
+        return "\n"
+                + "        \"p" + taskNumber + "\": "
+                + buildTaskJson(task)
+                + lineEnding;
     }
 
     private String buildTaskJson(Task task) {
