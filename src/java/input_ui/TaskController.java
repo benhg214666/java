@@ -49,11 +49,36 @@ public class TaskController {
     }
 
     String convertTasksToJson(List<Task> tasks) {
-        return null;
+        return "{\"periodic\": {" + buildPeriodicContent(tasks) + "}}";
     }
 
     private boolean isValidRowIndex(int rowIndex) {
         return rowIndex >= 0 && rowIndex < view.getTaskRowCount();
+    }
+
+    private String buildPeriodicContent(List<Task> tasks) {
+        List<String> taskEntries = new ArrayList<>();
+
+        for (int taskIndex = 0; taskIndex < tasks.size(); taskIndex++) {
+            int taskNumber = taskIndex + 1;
+            taskEntries.add(buildTaskEntry(taskNumber, tasks.get(taskIndex)));
+        }
+
+        return String.join(", ", taskEntries);
+    }
+
+    private String buildTaskEntry(int taskNumber, Task task) {
+        return "\"p" + taskNumber + "\": " + buildTaskJson(task);
+    }
+
+    private String buildTaskJson(Task task) {
+        return "{\"r\": " + task.getR()
+                + ", \"p\": " + task.getP()
+                + ", \"e\": " + task.getE()
+                + ", \"d\": " + task.getD()
+                + ", \"w\": " + task.getW()
+                + ", \"preempt\": " + task.getPreempt()
+                + "}";
     }
 
     private Task createTaskFromRow(Map<String, Integer> taskParameterRow) {
