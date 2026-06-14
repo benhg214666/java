@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class TaskController {
 
@@ -35,7 +37,15 @@ public class TaskController {
     }
 
     List<Task> collectTasksFromView() {
-        return null;
+        List<Task> tasks = new ArrayList<>();
+        int taskRowCount = view.getTaskRowCount();
+
+        for (int rowIndex = 0; rowIndex < taskRowCount; rowIndex++) {
+            Map<String, Integer> taskParameterRow = view.getTaskParameterRow(rowIndex);
+            tasks.add(createTaskFromRow(taskParameterRow));
+        }
+
+        return tasks;
     }
 
     String convertTasksToJson(List<Task> tasks) {
@@ -44,5 +54,29 @@ public class TaskController {
 
     private boolean isValidRowIndex(int rowIndex) {
         return rowIndex >= 0 && rowIndex < view.getTaskRowCount();
+    }
+
+    private Task createTaskFromRow(Map<String, Integer> taskParameterRow) {
+        return new Task(
+                getRequiredParameter(taskParameterRow, "r"),
+                getRequiredParameter(taskParameterRow, "p"),
+                getRequiredParameter(taskParameterRow, "e"),
+                getRequiredParameter(taskParameterRow, "d"),
+                getRequiredParameter(taskParameterRow, "w"),
+                getRequiredParameter(taskParameterRow, "preempt")
+        );
+    }
+
+    private int getRequiredParameter(
+            Map<String, Integer> taskParameterRow,
+            String parameterName
+    ) {
+        Integer parameterValue = taskParameterRow.get(parameterName);
+
+        if (parameterValue == null) {
+            throw new IllegalArgumentException("Missing task parameter: " + parameterName);
+        }
+
+        return parameterValue;
     }
 }
