@@ -6,13 +6,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.SwingWorker;
 
 public class TaskController {
 
     private TaskInputView view;
+    private final BackendService backendService;
 
     public TaskController(TaskInputView view) {
         this.view = view;
+        this.backendService = new BackendService();
         registerEventListeners();
     }
 
@@ -20,6 +23,7 @@ public class TaskController {
         view.onAddButtonClicked(this::handleAddButtonClick);
         view.onDeleteButtonClicked(this::handleDeleteButtonClick);
         view.onExportButtonClicked(this::handleExportButtonClick);
+        view.onRunScheduleButtonClicked(this::handleRunScheduleButtonClick);
     }
 
     private void handleAddButtonClick() {
@@ -38,18 +42,66 @@ public class TaskController {
     }
 
     private void handleExportButtonClick() {
-        exportTasksToJsonFile();
+        exportTasksToJsonFile(true);
     }
 
-    private void exportTasksToJsonFile() {
+    private void handleRunScheduleButtonClick() {
         try {
-            List<Task> tasks = collectTasksFromView();
-            String jsonContent = convertTasksToJson(tasks);
-            saveJsonToFile(jsonContent);
-            view.showSuccessMessage("task_set.json exported to output folder successfully.");
-        } catch (IOException exception) {
-            view.showErrorMessage("Failed to export task_set.json.");
+            exportTasksToJsonFile(false);
+        } catch (RuntimeException exception) {
+            view.showErrorMessage("Failed to prepare task_set.json: " + exception.getMessage());
+            return;
         }
+
+        view.setBusy(true);
+        SwingWorker<BackendService.ScheduleRunResult, Void> worker =
+                new SwingWorker<>() {
+                    @Override
+                    protected BackendService.ScheduleRunResult doInBackground() throws Exception {
+                        return backendService.runSchedule();
+                    }
+
+                    @Override
+                    protected void done() {
+                        view.setBusy(false);
+                        try {
+                            BackendService.ScheduleRunResult result = get();
+                            view.showSuccessMessage(
+                                    "Schedule completed successfully.\n\n"
+                                            + summarizeOutput(result.output())
+                            );
+                            backendService.openOutputWindow();
+                        } catch (Exception exception) {
+                            view.showErrorMessage("Schedule failed.\n\n" + rootMessage(exception));
+                        }
+                    }
+                };
+        worker.execute();
+    }
+
+    private void exportTasksToJsonFile(boolean showSuccessMessage) {
+        try {
+            writeTasksToJsonFile();
+            if (showSuccessMessage) {
+                view.showSuccessMessage("task_set.json exported to output folder successfully.");
+            }
+        } catch (IOException exception) {
+            if (showSuccessMessage) {
+                view.showErrorMessage("Failed to export task_set.json.");
+            }
+            throw new IllegalStateException(exception);
+        } catch (RuntimeException exception) {
+            if (showSuccessMessage) {
+                view.showErrorMessage("Invalid task data: " + exception.getMessage());
+            }
+            throw exception;
+        }
+    }
+
+    private void writeTasksToJsonFile() throws IOException {
+        List<Task> tasks = collectTasksFromView();
+        String jsonContent = convertTasksToJson(tasks);
+        saveJsonToFile(jsonContent);
     }
 
     List<Task> collectTasksFromView() {
@@ -58,7 +110,7 @@ public class TaskController {
 
         for (int rowIndex = 0; rowIndex < taskRowCount; rowIndex++) {
             Map<String, Integer> taskParameterRow = view.getTaskParameterRow(rowIndex);
-            tasks.add(createTaskFromRow(taskParameterRow));
+            tasks.add(createTaskFromRow(taskParameterRow, rowIndex + 1));
         }
 
         return tasks;
@@ -118,8 +170,8 @@ public class TaskController {
                 + "}";
     }
 
-    private Task createTaskFromRow(Map<String, Integer> taskParameterRow) {
-        return new Task(
+    private Task createTaskFromRow(Map<String, Integer> taskParameterRow, int rowNumber) {
+        Task task = new Task(
                 getRequiredParameter(taskParameterRow, "r"),
                 getRequiredParameter(taskParameterRow, "p"),
                 getRequiredParameter(taskParameterRow, "e"),
@@ -127,6 +179,8 @@ public class TaskController {
                 getRequiredParameter(taskParameterRow, "w"),
                 getRequiredParameter(taskParameterRow, "preempt")
         );
+        validateTask(task, rowNumber);
+        return task;
     }
 
     private int getRequiredParameter(
@@ -140,5 +194,46 @@ public class TaskController {
         }
 
         return parameterValue;
+    }
+
+    private void validateTask(Task task, int rowNumber) {
+        String prefix = "Row " + rowNumber + ": ";
+        if (task.getR() < 1 || task.getR() > task.getP()) {
+            throw new IllegalArgumentException(prefix + "release time must satisfy 1 <= r <= period.");
+        }
+        if (task.getP() < 6 || task.getP() > 24) {
+            throw new IllegalArgumentException(prefix + "period must be between 6 and 24.");
+        }
+        if (task.getE() < 1 || task.getE() > 4) {
+            throw new IllegalArgumentException(prefix + "execution time must be between 1 and 4.");
+        }
+        if (task.getD() < task.getE() || task.getD() > task.getP()) {
+            throw new IllegalArgumentException(prefix + "deadline must satisfy execution time <= deadline <= period.");
+        }
+        if (task.getW() < 6 || task.getW() > 18) {
+            throw new IllegalArgumentException(prefix + "energy demand must be between 6 and 18.");
+        }
+        if (task.getPreempt() != 0 && task.getPreempt() != 1) {
+            throw new IllegalArgumentException(prefix + "preempt must be 0 or 1.");
+        }
+    }
+
+    private String summarizeOutput(String output) {
+        if (output == null || output.isBlank()) {
+            return "No console output.";
+        }
+        int maximumLength = 1200;
+        if (output.length() <= maximumLength) {
+            return output;
+        }
+        return output.substring(0, maximumLength) + "\n...";
+    }
+
+    private String rootMessage(Exception exception) {
+        Throwable current = exception;
+        while (current.getCause() != null) {
+            current = current.getCause();
+        }
+        return current.getMessage() == null ? current.toString() : current.getMessage();
     }
 }

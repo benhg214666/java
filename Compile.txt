@@ -4,8 +4,8 @@ python src/python/scheduler.py --base-dir .
 python src/python/evaluator.py --base-dir .
 
 # Java Input UI
-javac src\java\input_ui\*.java
-java -cp src\java\input_ui TaskView
+javac src\java\output_ui\org\slf4j\*.java src\java\output_ui\*.java src\java\input_ui\*.java
+java -cp src\java\input_ui;src\java\output_ui TaskView
 
 # Java Output UI
 javac src\java\output_ui\org\slf4j\*.java src\java\output_ui\*.java

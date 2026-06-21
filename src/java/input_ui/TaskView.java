@@ -16,7 +16,7 @@ public class TaskView extends JFrame implements TaskInputView {
             "preempt"
     };
 
-    private static final Object[] DEFAULT_ROW_VALUES = {0, 0, 0, 0, 0, 1};
+    private static final Object[] DEFAULT_ROW_VALUES = {1, 8, 1, 8, 6, 1};
     private static final int MAX_TASK_COUNT = 10;
 
     private JTable taskTable;
@@ -24,12 +24,21 @@ public class TaskView extends JFrame implements TaskInputView {
     private JButton addButton;
     private JButton deleteButton;
     private JButton exportButton;
+    private JButton runScheduleButton;
 
     public TaskView() {
         initializeFrame();
         initializeTable();
         initializeButtons();
         layoutComponents();
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            TaskView view = new TaskView();
+            new TaskController(view);
+            view.setVisible(true);
+        });
     }
 
     @Override
@@ -87,6 +96,20 @@ public class TaskView extends JFrame implements TaskInputView {
     }
 
     @Override
+    public void onRunScheduleButtonClicked(Runnable callback) {
+        runScheduleButton.addActionListener(event -> callback.run());
+    }
+
+    @Override
+    public void setBusy(boolean busy) {
+        addButton.setEnabled(!busy);
+        deleteButton.setEnabled(!busy);
+        exportButton.setEnabled(!busy);
+        runScheduleButton.setEnabled(!busy);
+        runScheduleButton.setText(busy ? "Running..." : "Run Schedule");
+    }
+
+    @Override
     public void showSuccessMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -113,6 +136,7 @@ public class TaskView extends JFrame implements TaskInputView {
         addButton = new JButton("Add Row");
         deleteButton = new JButton("Delete Row");
         exportButton = new JButton("Export JSON");
+        runScheduleButton = new JButton("Run Schedule");
     }
 
     private void layoutComponents() {
@@ -125,6 +149,7 @@ public class TaskView extends JFrame implements TaskInputView {
         buttonPanel.add(addButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(exportButton);
+        buttonPanel.add(runScheduleButton);
         return buttonPanel;
     }
 

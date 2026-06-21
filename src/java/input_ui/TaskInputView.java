@@ -18,6 +18,10 @@ public interface TaskInputView {
 
     void onExportButtonClicked(Runnable callback);
 
+    void onRunScheduleButtonClicked(Runnable callback);
+
+    void setBusy(boolean busy);
+
     void showSuccessMessage(String message);
 
     void showErrorMessage(String message);
