@@ -1,12 +1,12 @@
 # Python core
-python backend/python/task_generator.py --base-dir .
-python backend/python/scheduler.py --base-dir .
-python backend/python/evaluator.py --base-dir .
+python backend/task_generator.py --base-dir .
+python backend/scheduler.py --base-dir .
+python backend/evaluator.py --base-dir .
 
 # Java Input UI
-javac backend\java\output_ui\org\slf4j\*.java backend\java\output_ui\*.java backend\java\input_ui\*.java
-java -cp backend\java\input_ui;backend\java\output_ui TaskView
+javac output_ui\org\slf4j\*.java output_ui\*.java input_ui\*.java
+java -cp input_ui;output_ui TaskView
 
 # Java Output UI
-javac backend\java\output_ui\org\slf4j\*.java backend\java\output_ui\*.java
-java -cp backend\java\output_ui OutputFrame
+javac output_ui\org\slf4j\*.java output_ui\*.java
+java -cp output_ui OutputFrame

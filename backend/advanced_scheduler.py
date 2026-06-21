@@ -55,7 +55,7 @@ def write_json(path: Path, payload: Any) -> None:
 
 
 def add_backend_to_path(base_dir: Path) -> None:
-    python_backend_dir = base_dir / "backend" / "python"
+    python_backend_dir = base_dir / "backend"
     if str(python_backend_dir) not in sys.path:
         sys.path.insert(0, str(python_backend_dir))
 

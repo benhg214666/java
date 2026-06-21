@@ -1,6 +1,6 @@
 {
     "level": 2,
-    "advanced_scheduler": "backend/python/advanced_scheduler.py",
+    "advanced_scheduler": "backend/advanced_scheduler.py",
     "base_dir": ".",
     "relaxed_assumptions": [
         "renewable_uncertainty",

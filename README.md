@@ -11,10 +11,12 @@ the Python scheduler through `ProcessBuilder`, and opens the result viewer after
   - Processor settings and 72-hour price data
 - `output/`
   - Generated task set, schedule result, acceptance log, and evaluation result
+- `input_ui/`
+  - Java task input UI and backend bridge
+- `output_ui/`
+  - Java schedule result viewer that reads `output/schedule_result.json`
 - `backend/`
-  - `java/input_ui/`: Java task input UI and backend bridge
-  - `java/output_ui/`: Java schedule result viewer that reads `output/schedule_result.json`
-  - `python/`: scheduling core: `task_generator.py`, `scheduler.py`,
+  - Python scheduling core: `task_generator.py`, `scheduler.py`,
     `advanced_scheduler.py`, and `evaluator.py`
 
 ## Run
@@ -22,13 +24,13 @@ the Python scheduler through `ProcessBuilder`, and opens the result viewer after
 Compile the full Java UI:
 
 ```powershell
-javac backend\java\output_ui\org\slf4j\*.java backend\java\output_ui\*.java backend\java\input_ui\*.java
+javac output_ui\org\slf4j\*.java output_ui\*.java input_ui\*.java
 ```
 
 Open the input UI:
 
 ```powershell
-java -cp backend\java\input_ui;backend\java\output_ui TaskView
+java -cp input_ui;output_ui TaskView
 ```
 
 On this machine, you can also use the helper script:
@@ -45,13 +47,13 @@ If Python is not on PATH, set `PYTHON_EXE` before starting Java:
 
 ```powershell
 $env:PYTHON_EXE = "C:\Path\To\python.exe"
-java -cp backend\java\input_ui;backend\java\output_ui TaskView
+java -cp input_ui;output_ui TaskView
 ```
 
 ## Python Commands
 
 ```powershell
-python backend/python/task_generator.py --base-dir .
-python backend/python/advanced_scheduler.py --base-dir .
-python backend/python/evaluator.py --base-dir .
+python backend/task_generator.py --base-dir .
+python backend/advanced_scheduler.py --base-dir .
+python backend/evaluator.py --base-dir .
 ```
