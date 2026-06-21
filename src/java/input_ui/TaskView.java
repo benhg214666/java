@@ -2,7 +2,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TaskView extends JFrame implements TaskInputView {
@@ -23,6 +26,7 @@ public class TaskView extends JFrame implements TaskInputView {
     private DefaultTableModel tableModel;
     private JButton addButton;
     private JButton deleteButton;
+    private JButton importButton;
     private JButton exportButton;
     private JButton runScheduleButton;
 
@@ -81,6 +85,32 @@ public class TaskView extends JFrame implements TaskInputView {
     }
 
     @Override
+    public void replaceTasks(List<Task> tasks) {
+        tableModel.setRowCount(0);
+        for (Task task : tasks) {
+            tableModel.addRow(new Object[] {
+                    task.getR(),
+                    task.getP(),
+                    task.getE(),
+                    task.getD(),
+                    task.getW(),
+                    task.getPreempt()
+            });
+        }
+    }
+
+    @Override
+    public Path chooseTaskSetJsonFile() {
+        JFileChooser fileChooser = new JFileChooser(new File("output"));
+        fileChooser.setDialogTitle("Import task_set.json");
+        int result = fileChooser.showOpenDialog(this);
+        if (result != JFileChooser.APPROVE_OPTION) {
+            return null;
+        }
+        return fileChooser.getSelectedFile().toPath();
+    }
+
+    @Override
     public void onAddButtonClicked(Runnable callback) {
         addButton.addActionListener(event -> callback.run());
     }
@@ -88,6 +118,11 @@ public class TaskView extends JFrame implements TaskInputView {
     @Override
     public void onDeleteButtonClicked(Runnable callback) {
         deleteButton.addActionListener(event -> callback.run());
+    }
+
+    @Override
+    public void onImportButtonClicked(Runnable callback) {
+        importButton.addActionListener(event -> callback.run());
     }
 
     @Override
@@ -104,6 +139,7 @@ public class TaskView extends JFrame implements TaskInputView {
     public void setBusy(boolean busy) {
         addButton.setEnabled(!busy);
         deleteButton.setEnabled(!busy);
+        importButton.setEnabled(!busy);
         exportButton.setEnabled(!busy);
         runScheduleButton.setEnabled(!busy);
         runScheduleButton.setText(busy ? "Running..." : "Run Schedule");
@@ -135,6 +171,7 @@ public class TaskView extends JFrame implements TaskInputView {
     private void initializeButtons() {
         addButton = new JButton("Add Row");
         deleteButton = new JButton("Delete Row");
+        importButton = new JButton("Import JSON");
         exportButton = new JButton("Export JSON");
         runScheduleButton = new JButton("Run Schedule");
     }
@@ -148,6 +185,7 @@ public class TaskView extends JFrame implements TaskInputView {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttonPanel.add(addButton);
         buttonPanel.add(deleteButton);
+        buttonPanel.add(importButton);
         buttonPanel.add(exportButton);
         buttonPanel.add(runScheduleButton);
         return buttonPanel;

@@ -1,3 +1,5 @@
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 public interface TaskInputView {
@@ -12,9 +14,15 @@ public interface TaskInputView {
 
     void deleteRow(int rowIndex);
 
+    void replaceTasks(List<Task> tasks);
+
+    Path chooseTaskSetJsonFile();
+
     void onAddButtonClicked(Runnable callback);
 
     void onDeleteButtonClicked(Runnable callback);
+
+    void onImportButtonClicked(Runnable callback);
 
     void onExportButtonClicked(Runnable callback);
 

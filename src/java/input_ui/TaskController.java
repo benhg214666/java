@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import javax.swing.SwingWorker;
@@ -22,6 +23,7 @@ public class TaskController {
     private void registerEventListeners() {
         view.onAddButtonClicked(this::handleAddButtonClick);
         view.onDeleteButtonClicked(this::handleDeleteButtonClick);
+        view.onImportButtonClicked(this::handleImportButtonClick);
         view.onExportButtonClicked(this::handleExportButtonClick);
         view.onRunScheduleButtonClicked(this::handleRunScheduleButtonClick);
     }
@@ -43,6 +45,23 @@ public class TaskController {
 
     private void handleExportButtonClick() {
         exportTasksToJsonFile(true);
+    }
+
+    private void handleImportButtonClick() {
+        Path selectedPath = view.chooseTaskSetJsonFile();
+        if (selectedPath == null) {
+            return;
+        }
+
+        try {
+            List<Task> tasks = loadTasksFromJsonFile(selectedPath);
+            view.replaceTasks(tasks);
+            view.showSuccessMessage("Imported " + tasks.size() + " tasks from " + selectedPath + ".");
+        } catch (IOException exception) {
+            view.showErrorMessage("Failed to read task set file: " + exception.getMessage());
+        } catch (RuntimeException exception) {
+            view.showErrorMessage("Invalid task set JSON: " + exception.getMessage());
+        }
     }
 
     private void handleRunScheduleButtonClick() {
@@ -134,6 +153,128 @@ public class TaskController {
         Files.createDirectories(outputDirectory);
         Path outputPath = outputDirectory.resolve("task_set.json");
         Files.writeString(outputPath, jsonContent, StandardCharsets.UTF_8);
+    }
+
+    private List<Task> loadTasksFromJsonFile(Path path) throws IOException {
+        String jsonContent = Files.readString(path, StandardCharsets.UTF_8);
+        Object root = SimpleJsonParser.parse(jsonContent);
+        if (!(root instanceof Map<?, ?> rootObject)) {
+            throw new IllegalArgumentException("Root value must be a JSON object.");
+        }
+
+        List<Task> tasks;
+        if (rootObject.containsKey("periodic")) {
+            tasks = tasksFromPeriodicObject(rootObject.get("periodic"));
+        } else if (rootObject.containsKey("tasks")) {
+            tasks = tasksFromArray(rootObject.get("tasks"));
+        } else {
+            throw new IllegalArgumentException("Expected 'periodic' object or 'tasks' array.");
+        }
+
+        if (tasks.isEmpty()) {
+            throw new IllegalArgumentException("Task set must contain at least one task.");
+        }
+        if (tasks.size() > 10) {
+            throw new IllegalArgumentException("Maximum 10 tasks are allowed.");
+        }
+
+        for (int index = 0; index < tasks.size(); index++) {
+            validateTask(tasks.get(index), index + 1);
+        }
+        return tasks;
+    }
+
+    private List<Task> tasksFromPeriodicObject(Object value) {
+        if (!(value instanceof Map<?, ?> periodicObject)) {
+            throw new IllegalArgumentException("'periodic' must be a JSON object.");
+        }
+
+        List<Map.Entry<?, ?>> entries = new ArrayList<>(periodicObject.entrySet());
+        entries.sort(Comparator.comparingInt(this::taskEntryOrder)
+                .thenComparing(entry -> String.valueOf(entry.getKey())));
+
+        List<Task> tasks = new ArrayList<>();
+        for (Map.Entry<?, ?> entry : entries) {
+            if (!(entry.getValue() instanceof Map<?, ?> taskObject)) {
+                throw new IllegalArgumentException("Task '" + entry.getKey() + "' must be an object.");
+            }
+            tasks.add(createTaskFromJsonObject(taskObject));
+        }
+        return tasks;
+    }
+
+    private int taskEntryOrder(Map.Entry<?, ?> entry) {
+        String key = String.valueOf(entry.getKey());
+        int index = key.length() - 1;
+        while (index >= 0 && Character.isDigit(key.charAt(index))) {
+            index--;
+        }
+        if (index == key.length() - 1) {
+            return Integer.MAX_VALUE;
+        }
+        return Integer.parseInt(key.substring(index + 1));
+    }
+
+    private List<Task> tasksFromArray(Object value) {
+        if (!(value instanceof List<?> taskArray)) {
+            throw new IllegalArgumentException("'tasks' must be a JSON array.");
+        }
+
+        List<Task> tasks = new ArrayList<>();
+        for (Object item : taskArray) {
+            if (!(item instanceof Map<?, ?> taskObject)) {
+                throw new IllegalArgumentException("Every item in 'tasks' must be an object.");
+            }
+            tasks.add(createTaskFromJsonObject(taskObject));
+        }
+        return tasks;
+    }
+
+    private Task createTaskFromJsonObject(Map<?, ?> taskObject) {
+        return new Task(
+                getRequiredInt(taskObject, "r", "release_time"),
+                getRequiredInt(taskObject, "p", "period"),
+                getRequiredInt(taskObject, "e", "execution_time"),
+                getRequiredInt(taskObject, "d", "deadline", "relative_deadline"),
+                getRequiredInt(taskObject, "w", "energy"),
+                getOptionalInt(taskObject, 1, "preempt", "preemptive")
+        );
+    }
+
+    private int getRequiredInt(Map<?, ?> object, String... keys) {
+        Object value = findFirstValue(object, keys);
+        if (value == null) {
+            throw new IllegalArgumentException("Missing task parameter: " + String.join("/", keys));
+        }
+        return asInt(value, String.join("/", keys));
+    }
+
+    private int getOptionalInt(Map<?, ?> object, int defaultValue, String... keys) {
+        Object value = findFirstValue(object, keys);
+        if (value == null) {
+            return defaultValue;
+        }
+        return asInt(value, String.join("/", keys));
+    }
+
+    private Object findFirstValue(Map<?, ?> object, String... keys) {
+        for (String key : keys) {
+            if (object.containsKey(key)) {
+                return object.get(key);
+            }
+        }
+        return null;
+    }
+
+    private int asInt(Object value, String parameterName) {
+        if (value instanceof Number numberValue) {
+            double doubleValue = numberValue.doubleValue();
+            int intValue = numberValue.intValue();
+            if (Math.abs(doubleValue - intValue) < 0.000001) {
+                return intValue;
+            }
+        }
+        throw new IllegalArgumentException(parameterName + " must be an integer.");
     }
 
     private boolean isValidRowIndex(int rowIndex) {
