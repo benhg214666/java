@@ -12,9 +12,9 @@ import javax.swing.SwingUtilities;
 
 public class BackendService {
 
-    private static final String ADVANCED_SCHEDULER = "src/python/advanced_scheduler.py";
-    private static final String BASIC_SCHEDULER = "src/python/scheduler.py";
-    private static final String EVALUATOR = "src/python/evaluator.py";
+    private static final String ADVANCED_SCHEDULER = "backend/python/advanced_scheduler.py";
+    private static final String BASIC_SCHEDULER = "backend/python/scheduler.py";
+    private static final String EVALUATOR = "backend/python/evaluator.py";
 
     private final Path projectRoot;
 
@@ -40,7 +40,7 @@ public class BackendService {
                 frame.setVisible(true);
             } catch (ClassNotFoundException exception) {
                 throw new IllegalStateException(
-                        "OutputFrame not found. Compile and run with src/java/output_ui on the classpath.",
+                        "OutputFrame not found. Compile and run with backend/java/output_ui on the classpath.",
                         exception
                 );
             } catch (
@@ -131,7 +131,7 @@ public class BackendService {
     private Path findProjectRoot() {
         Path current = Path.of("").toAbsolutePath().normalize();
         while (current != null) {
-            if (Files.isDirectory(current.resolve("src/python"))
+            if (Files.isDirectory(current.resolve("backend/python"))
                     && Files.isDirectory(current.resolve("input"))
                     && Files.isDirectory(current.resolve("output"))) {
                 return current;

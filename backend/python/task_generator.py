@@ -28,7 +28,7 @@ TIGHT_PERIODS = (8, 12, 16, 20, 24)
 def find_project_root() -> Path:
     current_path = Path(__file__).resolve()
     for candidate in current_path.parents:
-        if (candidate / "input").is_dir() and (candidate / "src").is_dir():
+        if (candidate / "input").is_dir() and (candidate / "backend").is_dir():
             return candidate
     return current_path.parent.parent.parent
 

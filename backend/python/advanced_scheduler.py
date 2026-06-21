@@ -34,7 +34,7 @@ DEFAULT_EXTRA_JOBS = {
 def find_project_root() -> Path:
     current_path = Path(__file__).resolve()
     for candidate in current_path.parents:
-        if (candidate / "input").is_dir() and (candidate / "src").is_dir():
+        if (candidate / "input").is_dir() and (candidate / "backend").is_dir():
             return candidate
     return current_path.parent.parent.parent
 
@@ -54,10 +54,10 @@ def write_json(path: Path, payload: Any) -> None:
         json.dump(payload, f, indent=4, ensure_ascii=False)
 
 
-def add_src_to_path(base_dir: Path) -> None:
-    python_src_dir = base_dir / "src" / "python"
-    if str(python_src_dir) not in sys.path:
-        sys.path.insert(0, str(python_src_dir))
+def add_backend_to_path(base_dir: Path) -> None:
+    python_backend_dir = base_dir / "backend" / "python"
+    if str(python_backend_dir) not in sys.path:
+        sys.path.insert(0, str(python_backend_dir))
 
 
 def renewable_multiplier(hour: int) -> float:
@@ -371,7 +371,7 @@ def build_evaluation(
 
 
 def run_level2(base_dir: Path) -> dict[str, Any]:
-    add_src_to_path(base_dir)
+    add_backend_to_path(base_dir)
     import scheduler
 
     task_set_path = base_dir / "output" / "task_set.json"

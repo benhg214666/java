@@ -7,30 +7,28 @@ the Python scheduler through `ProcessBuilder`, and opens the result viewer after
 
 ## Project Structure
 
-- `src/python/`
-  - Python scheduling core: `task_generator.py`, `scheduler.py`,
-    `advanced_scheduler.py`, and `evaluator.py`
-- `src/java/input_ui/`
-  - Java task input UI and backend bridge
-- `src/java/output_ui/`
-  - Java schedule result viewer that reads `output/schedule_result.json`
 - `input/`
   - Processor settings and 72-hour price data
 - `output/`
   - Generated task set, schedule result, acceptance log, and evaluation result
+- `backend/`
+  - `java/input_ui/`: Java task input UI and backend bridge
+  - `java/output_ui/`: Java schedule result viewer that reads `output/schedule_result.json`
+  - `python/`: scheduling core: `task_generator.py`, `scheduler.py`,
+    `advanced_scheduler.py`, and `evaluator.py`
 
 ## Run
 
 Compile the full Java UI:
 
 ```powershell
-javac src\java\output_ui\org\slf4j\*.java src\java\output_ui\*.java src\java\input_ui\*.java
+javac backend\java\output_ui\org\slf4j\*.java backend\java\output_ui\*.java backend\java\input_ui\*.java
 ```
 
 Open the input UI:
 
 ```powershell
-java -cp src\java\input_ui;src\java\output_ui TaskView
+java -cp backend\java\input_ui;backend\java\output_ui TaskView
 ```
 
 On this machine, you can also use the helper script:
@@ -39,20 +37,21 @@ On this machine, you can also use the helper script:
 .\run-ui.ps1
 ```
 
-Use `Export JSON` to write `output/task_set.json`, or use `Run Schedule` to
-export the tasks, run the Python backend, and open the output UI.
+Use `Import JSON` to load an existing task set into the Java table, use
+`Export JSON` to write `output/task_set.json`, or use `Run Schedule` to export
+the current tasks, run the Python backend, and open the output UI.
 
 If Python is not on PATH, set `PYTHON_EXE` before starting Java:
 
 ```powershell
 $env:PYTHON_EXE = "C:\Path\To\python.exe"
-java -cp src\java\input_ui;src\java\output_ui TaskView
+java -cp backend\java\input_ui;backend\java\output_ui TaskView
 ```
 
 ## Python Commands
 
 ```powershell
-python src/python/task_generator.py --base-dir .
-python src/python/advanced_scheduler.py --base-dir .
-python src/python/evaluator.py --base-dir .
+python backend/python/task_generator.py --base-dir .
+python backend/python/advanced_scheduler.py --base-dir .
+python backend/python/evaluator.py --base-dir .
 ```

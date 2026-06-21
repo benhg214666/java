@@ -16,7 +16,7 @@ $env:PYTHON_EXE = $BundledPython
 
 Write-Host "Using Python: $env:PYTHON_EXE" -ForegroundColor Cyan
 Write-Host "Compiling Java files..." -ForegroundColor Cyan
-javac src\java\output_ui\org\slf4j\*.java src\java\output_ui\*.java src\java\input_ui\*.java
+javac backend\java\output_ui\org\slf4j\*.java backend\java\output_ui\*.java backend\java\input_ui\*.java
 
 Write-Host "Opening task input UI..." -ForegroundColor Cyan
-java -cp "src\java\input_ui;src\java\output_ui" TaskView
+java -cp "backend\java\input_ui;backend\java\output_ui" TaskView
