@@ -4,8 +4,8 @@ python backend/scheduler.py --base-dir .
 python backend/evaluator.py --base-dir .
 
 # Java Input UI
-javac output_ui\org\slf4j\*.java output_ui\*.java input_ui\*.java
-java -cp input_ui;output_ui TaskView
+javac output_ui\org\slf4j\*.java output_ui\*.java backend\java\*.java input_ui\*.java
+java -cp input_ui;output_ui;backend\java TaskView
 
 # Java Output UI
 javac output_ui\org\slf4j\*.java output_ui\*.java

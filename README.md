@@ -12,25 +12,27 @@ the Python scheduler through `ProcessBuilder`, and opens the result viewer after
 - `output/`
   - Generated task set, schedule result, acceptance log, and evaluation result
 - `input_ui/`
-  - Java task input UI, backend bridge, and task-set validation
+  - Java task input UI and controller
 - `output_ui/`
   - Java schedule result viewer that reads `output/schedule_result.json`
 - `backend/`
   - Python scheduling core: `task_generator.py`, `scheduler.py`,
     `advanced_scheduler.py`, and `evaluator.py`
+- `backend/java/`
+  - Java backend bridge and task-set validation module
 
 ## Run
 
 Compile the full Java UI:
 
 ```powershell
-javac output_ui\org\slf4j\*.java output_ui\*.java input_ui\*.java
+javac output_ui\org\slf4j\*.java output_ui\*.java backend\java\*.java input_ui\*.java
 ```
 
 Open the input UI:
 
 ```powershell
-java -cp input_ui;output_ui TaskView
+java -cp input_ui;output_ui;backend\java TaskView
 ```
 
 On this machine, you can also use the helper script:
@@ -46,7 +48,7 @@ the current tasks, run the Python backend, and open the output UI.
 ## Java Backend Validation
 
 Before Java writes `output/task_set.json` or calls the Python scheduler, the
-backend validates the full task set in `input_ui/TaskSetValidator.java`.
+backend validates the full task set in `backend/java/TaskSetValidator.java`.
 
 The validator checks:
 
@@ -63,7 +65,7 @@ If Python is not on PATH, set `PYTHON_EXE` before starting Java:
 
 ```powershell
 $env:PYTHON_EXE = "C:\Path\To\python.exe"
-java -cp input_ui;output_ui TaskView
+java -cp input_ui;output_ui;backend\java TaskView
 ```
 
 ## Python Commands
