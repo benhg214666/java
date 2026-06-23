@@ -13,10 +13,12 @@ public class TaskController {
 
     private TaskInputView view;
     private final BackendService backendService;
+    private final TaskSetValidator taskSetValidator;
 
     public TaskController(TaskInputView view) {
         this.view = view;
         this.backendService = new BackendService();
+        this.taskSetValidator = new TaskSetValidator();
         registerEventListeners();
     }
 
@@ -119,6 +121,7 @@ public class TaskController {
 
     private void writeTasksToJsonFile() throws IOException {
         List<Task> tasks = collectTasksFromView();
+        taskSetValidator.validateTaskSet(tasks);
         String jsonContent = convertTasksToJson(tasks);
         saveJsonToFile(jsonContent);
     }
@@ -178,9 +181,7 @@ public class TaskController {
             throw new IllegalArgumentException("Maximum 10 tasks are allowed.");
         }
 
-        for (int index = 0; index < tasks.size(); index++) {
-            validateTask(tasks.get(index), index + 1);
-        }
+        taskSetValidator.validateTaskSet(tasks);
         return tasks;
     }
 
@@ -320,7 +321,7 @@ public class TaskController {
                 getRequiredParameter(taskParameterRow, "w"),
                 getRequiredParameter(taskParameterRow, "preempt")
         );
-        validateTask(task, rowNumber);
+        taskSetValidator.validateTask(task, rowNumber);
         return task;
     }
 
@@ -335,28 +336,6 @@ public class TaskController {
         }
 
         return parameterValue;
-    }
-
-    private void validateTask(Task task, int rowNumber) {
-        String prefix = "Row " + rowNumber + ": ";
-        if (task.getR() < 1 || task.getR() > task.getP()) {
-            throw new IllegalArgumentException(prefix + "release time must satisfy 1 <= r <= period.");
-        }
-        if (task.getP() < 6 || task.getP() > 24) {
-            throw new IllegalArgumentException(prefix + "period must be between 6 and 24.");
-        }
-        if (task.getE() < 1 || task.getE() > 4) {
-            throw new IllegalArgumentException(prefix + "execution time must be between 1 and 4.");
-        }
-        if (task.getD() < task.getE() || task.getD() > task.getP()) {
-            throw new IllegalArgumentException(prefix + "deadline must satisfy execution time <= deadline <= period.");
-        }
-        if (task.getW() < 6 || task.getW() > 18) {
-            throw new IllegalArgumentException(prefix + "energy demand must be between 6 and 18.");
-        }
-        if (task.getPreempt() != 0 && task.getPreempt() != 1) {
-            throw new IllegalArgumentException(prefix + "preempt must be 0 or 1.");
-        }
     }
 
     private String summarizeOutput(String output) {
