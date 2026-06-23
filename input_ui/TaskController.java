@@ -14,11 +14,13 @@ public class TaskController {
     private TaskInputView view;
     private final BackendService backendService;
     private final TaskSetValidator taskSetValidator;
+    private final BackendLogService backendLogService;
 
     public TaskController(TaskInputView view) {
         this.view = view;
         this.backendService = new BackendService();
         this.taskSetValidator = new TaskSetValidator();
+        this.backendLogService = new BackendLogService(backendService.getProjectRoot());
         registerEventListeners();
     }
 
@@ -67,9 +69,16 @@ public class TaskController {
     }
 
     private void handleRunScheduleButtonClick() {
+        long startedAtMillis = System.currentTimeMillis();
+        List<Task> tasks;
         try {
-            exportTasksToJsonFile(false);
+            tasks = writeTasksToJsonFile();
+        } catch (IOException exception) {
+            writeBackendRunLog(startedAtMillis, safeTaskCount(), false, false, rootMessage(exception), "");
+            view.showErrorMessage("Failed to prepare task_set.json: " + exception.getMessage());
+            return;
         } catch (RuntimeException exception) {
+            writeBackendRunLog(startedAtMillis, safeTaskCount(), false, false, rootMessage(exception), "");
             view.showErrorMessage("Failed to prepare task_set.json: " + exception.getMessage());
             return;
         }
@@ -87,13 +96,23 @@ public class TaskController {
                         view.setBusy(false);
                         try {
                             BackendService.ScheduleRunResult result = get();
+                            writeBackendRunLog(
+                                    startedAtMillis,
+                                    tasks.size(),
+                                    true,
+                                    true,
+                                    "Schedule completed successfully.",
+                                    result.output()
+                            );
                             view.showSuccessMessage(
                                     "Schedule completed successfully.\n\n"
                                             + summarizeOutput(result.output())
                             );
                             backendService.openOutputWindow();
                         } catch (Exception exception) {
-                            view.showErrorMessage("Schedule failed.\n\n" + rootMessage(exception));
+                            String message = rootMessage(exception);
+                            writeBackendRunLog(startedAtMillis, tasks.size(), true, false, message, "");
+                            view.showErrorMessage("Schedule failed.\n\n" + message);
                         }
                     }
                 };
@@ -119,11 +138,12 @@ public class TaskController {
         }
     }
 
-    private void writeTasksToJsonFile() throws IOException {
+    private List<Task> writeTasksToJsonFile() throws IOException {
         List<Task> tasks = collectTasksFromView();
         taskSetValidator.validateTaskSet(tasks);
         String jsonContent = convertTasksToJson(tasks);
         saveJsonToFile(jsonContent);
+        return tasks;
     }
 
     List<Task> collectTasksFromView() {
@@ -349,7 +369,37 @@ public class TaskController {
         return output.substring(0, maximumLength) + "\n...";
     }
 
-    private String rootMessage(Exception exception) {
+    private int safeTaskCount() {
+        try {
+            return collectTasksFromView().size();
+        } catch (RuntimeException exception) {
+            return 0;
+        }
+    }
+
+    private void writeBackendRunLog(
+            long startedAtMillis,
+            int taskCount,
+            boolean validationPassed,
+            boolean pythonSucceeded,
+            String message,
+            String pythonOutput
+    ) {
+        try {
+            backendLogService.appendRunLog(backendLogService.createRunLog(
+                    startedAtMillis,
+                    taskCount,
+                    validationPassed,
+                    pythonSucceeded,
+                    message,
+                    pythonOutput
+            ));
+        } catch (IOException exception) {
+            System.err.println("Failed to write Java backend log: " + exception.getMessage());
+        }
+    }
+
+    private String rootMessage(Throwable exception) {
         Throwable current = exception;
         while (current.getCause() != null) {
             current = current.getCause();

@@ -19,7 +19,7 @@ the Python scheduler through `ProcessBuilder`, and opens the result viewer after
   - Python scheduling core: `task_generator.py`, `scheduler.py`,
     `advanced_scheduler.py`, and `evaluator.py`
 - `backend/java/`
-  - Java backend bridge and task-set validation module
+  - Java backend bridge, task-set validation, and backend execution logging
 
 ## Run
 
@@ -60,6 +60,20 @@ The validator checks:
   distributions must be present
 - each task must satisfy release time, period, execution time, deadline, energy
   demand, preemption, frame-bound, and 72-hour horizon rules
+
+## Java Backend Log
+
+Every `Run Schedule` action writes an execution record to
+`output/java_backend_log.json`.
+
+The log records:
+
+- execution timestamp and duration
+- task count
+- whether Java validation passed
+- whether the Python scheduler succeeded
+- whether expected output files exist
+- error message or Python output preview
 
 If Python is not on PATH, set `PYTHON_EXE` before starting Java:
 
