@@ -15,12 +15,14 @@ public class TaskController {
     private final BackendService backendService;
     private final TaskSetValidator taskSetValidator;
     private final BackendLogService backendLogService;
+    private final EvaluationResultParser evaluationResultParser;
 
     public TaskController(TaskInputView view) {
         this.view = view;
         this.backendService = new BackendService();
         this.taskSetValidator = new TaskSetValidator();
         this.backendLogService = new BackendLogService(backendService.getProjectRoot());
+        this.evaluationResultParser = new EvaluationResultParser(backendService.getProjectRoot());
         registerEventListeners();
     }
 
@@ -74,11 +76,11 @@ public class TaskController {
         try {
             tasks = writeTasksToJsonFile();
         } catch (IOException exception) {
-            writeBackendRunLog(startedAtMillis, safeTaskCount(), false, false, rootMessage(exception), "");
+            writeBackendRunLog(startedAtMillis, safeTaskCount(), false, false, rootMessage(exception), "", null);
             view.showErrorMessage("Failed to prepare task_set.json: " + exception.getMessage());
             return;
         } catch (RuntimeException exception) {
-            writeBackendRunLog(startedAtMillis, safeTaskCount(), false, false, rootMessage(exception), "");
+            writeBackendRunLog(startedAtMillis, safeTaskCount(), false, false, rootMessage(exception), "", null);
             view.showErrorMessage("Failed to prepare task_set.json: " + exception.getMessage());
             return;
         }
@@ -96,22 +98,26 @@ public class TaskController {
                         view.setBusy(false);
                         try {
                             BackendService.ScheduleRunResult result = get();
+                            EvaluationSummary evaluationSummary = loadEvaluationSummary();
                             writeBackendRunLog(
                                     startedAtMillis,
                                     tasks.size(),
                                     true,
                                     true,
                                     "Schedule completed successfully.",
-                                    result.output()
+                                    result.output(),
+                                    evaluationSummary
                             );
                             view.showSuccessMessage(
                                     "Schedule completed successfully.\n\n"
                                             + summarizeOutput(result.output())
+                                            + "\n\n"
+                                            + evaluationSummaryText(evaluationSummary)
                             );
                             backendService.openOutputWindow();
                         } catch (Exception exception) {
                             String message = rootMessage(exception);
-                            writeBackendRunLog(startedAtMillis, tasks.size(), true, false, message, "");
+                            writeBackendRunLog(startedAtMillis, tasks.size(), true, false, message, "", null);
                             view.showErrorMessage("Schedule failed.\n\n" + message);
                         }
                     }
@@ -383,7 +389,8 @@ public class TaskController {
             boolean validationPassed,
             boolean pythonSucceeded,
             String message,
-            String pythonOutput
+            String pythonOutput,
+            EvaluationSummary evaluationSummary
     ) {
         try {
             backendLogService.appendRunLog(backendLogService.createRunLog(
@@ -392,11 +399,28 @@ public class TaskController {
                     validationPassed,
                     pythonSucceeded,
                     message,
-                    pythonOutput
+                    pythonOutput,
+                    evaluationSummary
             ));
         } catch (IOException exception) {
             System.err.println("Failed to write Java backend log: " + exception.getMessage());
         }
+    }
+
+    private EvaluationSummary loadEvaluationSummary() {
+        try {
+            return evaluationResultParser.loadSummary();
+        } catch (IOException | RuntimeException exception) {
+            System.err.println("Failed to read evaluation summary: " + exception.getMessage());
+            return null;
+        }
+    }
+
+    private String evaluationSummaryText(EvaluationSummary evaluationSummary) {
+        if (evaluationSummary == null) {
+            return "Evaluation Summary\nUnable to read output/evaluation_results.json.";
+        }
+        return evaluationSummary.toDisplayText();
     }
 
     private String rootMessage(Throwable exception) {

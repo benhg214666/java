@@ -19,7 +19,8 @@ the Python scheduler through `ProcessBuilder`, and opens the result viewer after
   - Python scheduling core: `task_generator.py`, `scheduler.py`,
     `advanced_scheduler.py`, and `evaluator.py`
 - `backend/java/`
-  - Java backend bridge, task-set validation, and backend execution logging
+  - Java backend bridge, task-set validation, backend execution logging, and
+    evaluation result parsing
 
 ## Run
 
@@ -74,6 +75,25 @@ The log records:
 - whether the Python scheduler succeeded
 - whether expected output files exist
 - error message or Python output preview
+
+## Java Evaluation Summary
+
+After the Python scheduler writes `output/evaluation_results.json`, Java reads
+that file with `backend/java/EvaluationResultParser.java` and converts the raw
+evaluation JSON into an `EvaluationSummary`.
+
+The Java summary includes:
+
+- hard and soft deadline miss rates
+- sporadic value rate
+- generator cost
+- market revenue
+- objective value
+- constraint violation count
+- verification status
+
+The summary is shown in the success message and also saved inside
+`output/java_backend_log.json`.
 
 If Python is not on PATH, set `PYTHON_EXE` before starting Java:
 

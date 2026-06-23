@@ -66,7 +66,8 @@ public class BackendLogService {
             boolean validationPassed,
             boolean pythonSucceeded,
             String message,
-            String pythonOutput
+            String pythonOutput,
+            EvaluationSummary evaluationSummary
     ) {
         return new BackendRunLog(
                 LocalDateTime.now().format(TIME_FORMATTER),
@@ -76,7 +77,8 @@ public class BackendLogService {
                 System.currentTimeMillis() - startedAtMillis,
                 outputFileStatus(),
                 message,
-                preview(pythonOutput)
+                preview(pythonOutput),
+                evaluationSummary
         );
     }
 
@@ -98,7 +100,8 @@ public class BackendLogService {
                 + "  \"duration_ms\": " + log.durationMillis() + ",\n"
                 + "  \"output_files\": " + outputFilesJson(log.outputFiles()) + ",\n"
                 + "  \"message\": \"" + escape(log.message()) + "\",\n"
-                + "  \"python_output_preview\": \"" + escape(log.pythonOutputPreview()) + "\"\n"
+                + "  \"python_output_preview\": \"" + escape(log.pythonOutputPreview()) + "\",\n"
+                + "  \"evaluation_summary\": " + evaluationSummaryJson(log.evaluationSummary()) + "\n"
                 + "}";
     }
 
@@ -118,6 +121,22 @@ public class BackendLogService {
         }
         builder.append("}");
         return builder.toString();
+    }
+
+    private String evaluationSummaryJson(EvaluationSummary summary) {
+        if (summary == null) {
+            return "null";
+        }
+        return "{"
+                + "\"hard_deadline_miss_rate\": " + summary.hardDeadlineMissRate()
+                + ", \"soft_deadline_miss_rate\": " + summary.softDeadlineMissRate()
+                + ", \"sporadic_value_rate\": " + summary.sporadicValueRate()
+                + ", \"generator_cost\": " + summary.generatorCost()
+                + ", \"market_revenue\": " + summary.marketRevenue()
+                + ", \"objective_value\": " + summary.objectiveValue()
+                + ", \"constraint_violation_count\": " + summary.constraintViolationCount()
+                + ", \"verification_passed\": " + summary.verificationPassed()
+                + "}";
     }
 
     private String preview(String text) {
@@ -153,7 +172,8 @@ public class BackendLogService {
             long durationMillis,
             Map<String, Boolean> outputFiles,
             String message,
-            String pythonOutputPreview
+            String pythonOutputPreview,
+            EvaluationSummary evaluationSummary
     ) {
     }
 }
